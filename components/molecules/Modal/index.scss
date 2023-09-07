@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .wrapper_modal {
+    @apply fixed inset-0 z-50 flex items-start justify-end;
+  }
+
+  .modal {
+    @apply relative w-full max-w-lg animate-slide-left overflow-hidden rounded-2xl bg-white shadow-md shadow-grey/50;
+  }
+
+  .modal__container {
+    @apply px-10 py-5;
+  }
+
+  .modal__container_head {
+    @apply flex justify-between items-center gap-x-5;
+  }
+
+  .modal__title {
+    @apply text-black font-fontPrimaryBold text-lg;
+  }
+
+  .modal__icon {
+    @apply text-grey/50 h-6 w-6;
+  }
+
+  .modal__header {
+    @apply mb-5 flex items-center justify-center gap-x-2;
+  }
+
+  .modal__main {
+    @apply grid h-[30rem] grid-cols-1 gap-y-4 overflow-y-auto;
+  }
+
+  .modal__button {
+    @apply flex items-center justify-center gap-x-5 mb-5;
+  }
+ 
+}

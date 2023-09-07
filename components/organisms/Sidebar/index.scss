@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .siderbar {
+    @apply bg-gradient-to-b to-colorCyan via-black from-grey fixed z-20 h-full w-fit cursor-pointer border-r py-5 shadow;
+  }
+}

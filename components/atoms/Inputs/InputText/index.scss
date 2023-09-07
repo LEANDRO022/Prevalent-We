@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+    .input__label {
+        @apply text-sm space-y-1 font-fontPrimaryRegular font-bold;
+    }
+    .input {
+        @apply border-black placeholder:text-grey placeholder:font-fontPrimaryLight font-fontPrimaryRegular font-light h-11 w-full max-w-[30rem] rounded-md border px-3 text-sm placeholder:text-[13px] focus:outline-none;
+    }
+
+    .input_disabled {
+        @apply bg-grey/20 border-grey;
+    }
+}

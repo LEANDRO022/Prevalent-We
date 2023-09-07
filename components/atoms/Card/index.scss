@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+    .card {
+        @apply w-full h-full shadow-md shadow-grey/30 overflow-hidden rounded-2xl;
+    }
+
+    .card__content {
+        @apply space-y-2 p-5;
+    }
+
+    .card__title {
+        @apply text-black font-fontPrimaryBold text-sm md:text-base truncate;
+    }
+
+    .card__subtitle {
+         @apply text-black font-fontPrimaryRegular font-bold capitalize text-base text-left;
+    }
+
+    .card__text {
+        @apply text-black font-fontPrimaryLight normal-case text-xs text-left;
+    }
+
+    .card__text_progressbar {
+        @apply text-colorCyan500;
+    }
+
+    .card__text_badge {
+        @apply text-black font-fontPrimaryLight text-xs py-1 border text-center border-colorCyan500 rounded-lg;
+    }
+
+    .card__icon {
+        @apply text-colorCyan h-5 w-5;
+    }
+
+    // Card type B y C
+    .card_type {
+        @apply hover:bg-colorCyan500/30 h-full cursor-pointer;
+    }
+
+    .card_type__container_head {
+        @apply grid grid-cols-2 items-center gap-x-2;
+    }
+
+    .container_head__text {
+        @apply flex gap-x-2;
+    }
+
+    .container_head__button {
+        @apply flex gap-x-2 justify-end;
+    }
+
+    .card_type__container_main {
+        @apply space-y-5;
+    }
+
+    .container_main__text {
+        @apply space-y-1;
+    }
+
+    .container_main__indicator {
+        @apply grid grid-cols-2 gap-x-1 lg:gap-x-10 justify-between items-end;
+    }
+
+    .container_main__info {
+        @apply grid grid-cols-2 items-end justify-end gap-x-1;
+    }
+
+    .container_main__date {
+        @apply flex items-center justify-end;
+    }
+
+    .container_main__avatar {
+        @apply px-2 flex items-center flex-nowrap;
+    }
+
+    .card_type__avatar {
+        @apply w-6 h-6 bg-cover rounded-md -ml-2;
+    }
+
+    .container_main__footer {
+        @apply grid grid-cols-2 gap-x-5;
+    }
+
+    // Card mini
+    .card__mini_text {
+        @apply text-xs lg:text-base text-center font-fontPrimaryBold;
+    }
+
+    .card__mini_number {
+        @apply text-base font-fontPrimaryRegular;
+    }
+
+    // Cards page master
+    .card__master {
+        @apply  lg:p-3 p-5;
+    }
+
+    .card__master_text {
+        @apply text-grey text-xs leading-5;
+    }
+
+}

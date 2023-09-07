@@ -1,0 +1,1242 @@
+/* eslint-disable */
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LearUp Portal| Login</title>
+    <link
+      rel="shortcut icon"
+      href="/public/img/login/icon.png"
+      type="image/x-icon"
+    />
+    <!-- Implementation of iconify.design as a source for icons -->
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
+    <!-- Implementation of styles -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;700&family=Poppins:wght@300;400;500;700&display=swap');
+
+      /* Global variables */
+      :root {
+        /* Colores principales*/
+        --colorPrimary: #26b693;
+        --colorSecondary: #667080;
+        --colorAccent: #eef1f4;
+        --colorBorder: #27394f;
+
+        /* Tipografia oficial */
+        --colorBlack: #000;
+        --colorWhite: #fff;
+        --colorGray: #667080;
+        --colorLightGray: #8d8d8d;
+        --colorTurquoise: #008c94;
+        --colorAqua: #25b693;
+
+        /* Tipografia oficial */
+        --fontPrimary: 'Poppins', sans-serif;
+        --fontSecondary: 'Saira', sans-serif;
+      }
+
+      /* 
+        ------------------------------------------
+        Animations
+        ------------------------------------------ */
+      /** shake-horizontal */
+      @-webkit-keyframes shake-horizontal {
+        0%,
+        100% {
+          -webkit-transform: translateX(0);
+          transform: translateX(0);
+        }
+
+        10%,
+        30%,
+        50%,
+        70% {
+          -webkit-transform: translateX(-10px);
+          transform: translateX(-10px);
+        }
+
+        20%,
+        40%,
+        60% {
+          -webkit-transform: translateX(10px);
+          transform: translateX(10px);
+        }
+
+        80% {
+          -webkit-transform: translateX(8px);
+          transform: translateX(8px);
+        }
+
+        90% {
+          -webkit-transform: translateX(-8px);
+          transform: translateX(-8px);
+        }
+      }
+
+      @keyframes shake-horizontal {
+        0%,
+        100% {
+          -webkit-transform: translateX(0);
+          transform: translateX(0);
+        }
+
+        10%,
+        30%,
+        50%,
+        70% {
+          -webkit-transform: translateX(-10px);
+          transform: translateX(-10px);
+        }
+
+        20%,
+        40%,
+        60% {
+          -webkit-transform: translateX(10px);
+          transform: translateX(10px);
+        }
+
+        80% {
+          -webkit-transform: translateX(8px);
+          transform: translateX(8px);
+        }
+
+        90% {
+          -webkit-transform: translateX(-8px);
+          transform: translateX(-8px);
+        }
+      }
+
+      /**
+        * ----------------------------------------
+        * animation swing-in-top-fwd
+        * ----------------------------------------
+        */
+      @-webkit-keyframes swing-in-top-fwd {
+        0% {
+          -webkit-transform: rotateX(-100deg);
+          transform: rotateX(-100deg);
+          -webkit-transform-origin: top;
+          transform-origin: top;
+          opacity: 0;
+        }
+        100% {
+          -webkit-transform: rotateX(0deg);
+          transform: rotateX(0deg);
+          -webkit-transform-origin: top;
+          transform-origin: top;
+          opacity: 1;
+        }
+      }
+      @keyframes swing-in-top-fwd {
+        0% {
+          -webkit-transform: rotateX(-100deg);
+          transform: rotateX(-100deg);
+          -webkit-transform-origin: top;
+          transform-origin: top;
+          opacity: 0;
+        }
+        100% {
+          -webkit-transform: rotateX(0deg);
+          transform: rotateX(0deg);
+          -webkit-transform-origin: top;
+          transform-origin: top;
+          opacity: 1;
+        }
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        -webkit-font-smoothing: antialiased;
+        scroll-behavior: smooth;
+        font-size: 16px;
+        font-family: var(--fontPrimary);
+      }
+
+      /* Standard components (global) */
+      .title {
+        font-weight: 500;
+        color: var(--colorWhite);
+      }
+
+      .text {
+        font-weight: 300;
+        color: var(--colorWhite);
+      }
+
+      .button {
+        padding: 0.8rem 1.5rem;
+        border-radius: 0.37rem;
+        background-color: var(--colorPrimary);
+        border: none;
+        font-family: var(--fontPrimary);
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.4rem;
+        letter-spacing: -0.02px;
+        color: var(--colorWhite);
+        cursor: pointer;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      .animation__error {
+        -webkit-animation: shake-horizontal 0.8s
+          cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+        animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+          both;
+      }
+
+      .toast {
+        position: absolute;
+        width: 30rem;
+        height: max-content;
+        padding: 0.5rem 2rem 2rem 2rem;
+        border: none;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+          rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+          rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+        border-radius: 0.5rem;
+        top: 1rem;
+        right: 0.5rem;
+        z-index: 999;
+        -webkit-animation: swing-in-top-fwd 0.5s
+          cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+        animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+          both;
+      }
+
+      /* Start login*/
+      .wrapper {
+        width: 100%;
+        height: 100vh;
+        background: url('/public/img/login/background.png'), var(--colorPrimary);
+        background-repeat: no-repeat;
+        background-position-y: bottom;
+        background-size: 100% 50%;
+      }
+
+      .text__toast {
+        color: var(--colorPrimary);
+      }
+
+      .toast__error {
+        display: none;
+        background-color: var(--colorWhite);
+      }
+
+      .toast__warning {
+        display: none;
+        background-color: rgba(255, 245, 220, 1);
+      }
+
+      .button__toast {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+      }
+
+      .button__icon {
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+      }
+
+      .button__icon--error {
+        color: #b91c1c;
+      }
+
+      .button__icon--warning {
+        color: #f7cf68;
+      }
+
+      .toast__content {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .toast__icon {
+        font-size: 2.5rem;
+      }
+
+      .toast__icon--error {
+        color: #b91c1c;
+      }
+
+      .toast__icon--warning {
+        color: #f7cf68;
+      }
+
+      .main__message,
+      .main {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+
+      .main__message {
+        display: none;
+      }
+
+      /* Bands container */
+      .bands {
+        position: absolute;
+        inset: 0;
+      }
+
+      .bands__container {
+        width: 100%;
+        height: 100%;
+      }
+      .band__logo {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        height: 50%;
+      }
+      .band__wider {
+        width: 40%;
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 5rem;
+        padding-top: 4rem;
+      }
+
+      /* Bands elements container */
+
+      .mainLogo {
+        padding-left: 1rem;
+      }
+
+      .text__signin {
+        font-size: 1.5rem;
+        letter-spacing: 0.1rem;
+        font-weight: 400;
+        color: var(--colorWhite);
+      }
+
+      .text__signin--description {
+        font-size: 0.8rem;
+        letter-spacing: 0.1rem;
+        font-weight: 300;
+        color: var(--colorWhite);
+      }
+
+      .band__signin--description {
+        margin-top: 1.5rem;
+      }
+
+      .band__wider--sesion {
+        display: block;
+        -webkit-animation: swing-in-top-fwd 0.5s
+          cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+        animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+          both;
+      }
+
+      .band__wider--recovery {
+        display: none;
+        -webkit-animation: swing-in-top-fwd 0.5s
+          cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+        animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+          both;
+      }
+
+      .band__wider--congratulation {
+        display: none;
+        -webkit-animation: swing-in-top-fwd 0.5s
+          cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+        animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+          both;
+      }
+
+      /*forms*/
+      .forms {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        right: 0;
+        z-index: 99;
+      }
+
+      .form {
+        width: 75%;
+        max-width: 539px;
+        height: 82%;
+        max-height: 741px;
+        padding: 1rem;
+        border-radius: 2.5rem;
+        background-color: var(--colorWhite);
+        box-shadow: 0px 4px 35px 0px rgba(0, 0, 0, 0.08);
+      }
+
+      /* Form container*/
+      .form__signin,
+      .form__recovery,
+      .box__congratulation {
+        width: 100%;
+        height: 100%;
+        padding: 0.8rem 0.75rem;
+      }
+
+      .form__signin {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form__recovery {
+        display: none;
+      }
+
+      .box__congratulation {
+        display: none;
+      }
+
+      .form__button {
+        width: 100%;
+        text-align: center;
+      }
+      .form__link {
+        width: 100%;
+        text-align: right;
+        height: 18vh;
+      }
+
+      .form__button--container {
+        display: inline-flex;
+        column-gap: 1rem;
+      }
+
+      /* Form elements*/
+      .form__title {
+        font-weight: 400;
+        font-size: 1.3rem;
+        height: 7vh;
+      }
+
+      .learUp {
+        font-weight: 500;
+        font-size: 1.3rem;
+        color: var(--colorAqua);
+      }
+
+      .form__welcome {
+        font-weight: 500;
+        font-size: 2rem;
+        height: 15vh;
+      }
+
+      .form__link--text {
+        font-family: var(--colorPrimary);
+        font-weight: 400;
+        font-size: 0.8rem;
+        color: var(--colorPrimary);
+      }
+
+      .form__title--recovery {
+        font-size: 1.5rem;
+        text-align: left;
+      }
+
+      .form__icon--recovery,
+      .box__icon--congratulation {
+        font-size: 2rem;
+        text-decoration: none;
+        color: var(--colorPrimary);
+      }
+
+      .form__icon--recovery {
+        display: none;
+      }
+
+      .box__icon--congratulation {
+        display: none;
+      }
+
+      .form__input {
+        height: 12vh;
+      }
+
+      .form__input--label {
+        font-family: var(--fontPrimary);
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.3rem;
+        letter-spacing: -0.02rem;
+        color: var(--colorBlack);
+      }
+
+      .form__input--field {
+        width: 100%;
+        height: 2.5rem;
+        position: relative;
+      }
+
+      .form__input--field input {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        flex-shrink: 0;
+        align-self: stretch;
+
+        padding: 0.9rem 0.85rem;
+        outline: none;
+        border: 1px solid var(--colorBorder);
+        border-radius: 0.4rem;
+        color: var(--colorSecondary);
+        font-family: var(--fontPrimary);
+        font-weight: 300;
+        font-size: 14px;
+        font-style: normal;
+        line-height: 22px;
+        letter-spacing: -0.28px;
+      }
+
+      .form__input--field input::placeholder {
+        color: var(--colorSecondary);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form__input--field input:focus {
+        border: 2px solid var(--colorPrimary);
+      }
+
+      .icon__input--field {
+        margin-left: 85%;
+        font-size: 1.5rem;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: var(--colorPrimary);
+      }
+
+      .disable-password-icon {
+        display: none;
+      }
+
+      .button__primary--big {
+        width: 100%;
+      }
+
+      .button__secondary {
+        width: 7rem;
+        text-decoration: none;
+        color: var(--colorGray);
+        background-color: var(--colorAccent);
+      }
+
+      .box__text {
+        font-size: 0.8rem;
+        color: var(--colorPrimary);
+        margin-bottom: 2rem;
+      }
+
+      .box__text--cursive {
+        font-style: italic;
+      }
+
+      /*@media screen and (min-width: 320px) and (max-width: 1023px) {
+        html {
+          font-size: 14px;
+        }
+
+        .main__message {
+          display: block;
+        }
+
+        .main {
+          display: none;
+        }
+      }*/
+      @media (min-width: 526px) {
+        .band__logoForm {
+          display: none;
+        }
+
+        .form__mSingin {
+          display: none;
+        }
+
+        .form__singUp {
+          display: none;
+        }
+      }
+
+      @media screen and (min-width: 525px) and (max-width: 805px) {
+        .form {
+          width: 90%;
+          height: 90%;
+        }
+
+        .form__title {
+          font-size: 1rem;
+        }
+
+        .learUp {
+          font-size: 1rem;
+        }
+
+        .form__mSingin {
+          display: none;
+        }
+
+        .form__singUp {
+          display: none;
+        }
+
+        .mainLogo {
+          max-width: 50%;
+          height: auto;
+        }
+
+        .text__signin--description {
+          display: none;
+        }
+      }
+
+      @media (max-width: 525px) {
+        .wrapper {
+          background: url('/public/img/login/learupBG.png'), var(--colorPrimary);
+          background-repeat: no-repeat;
+          background-position-y: bottom;
+          background-size: 100% 50vh;
+        }
+
+        .mainLogo {
+          display: none;
+        }
+
+        .logoBlack {
+          width: auto;
+          height: 10%;
+        }
+
+        .band__wider {
+          display: none;
+        }
+
+        .band__logoForm {
+          width: 100%;
+          text-align: center;
+          padding-bottom: 2vh;
+        }
+
+        .forms {
+          width: 100vw;
+          height: 100vh;
+        }
+
+        .form {
+          width: 87%;
+          height: 78%;
+          padding: 1.3rem 1.6rem 1.3rem 1.6rem;
+        }
+
+        .box__title {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+
+        .form__title {
+          font-size: 1rem;
+          margin-right: 1%;
+        }
+
+        .learUp {
+          font-weight: 600;
+          font-size: 1rem;
+        }
+
+        .form__singUp {
+          display: none;
+        }
+
+        .form__noAccount {
+          font-size: 0.75rem;
+          color: var(--colorLightGray);
+          font-weight: 400;
+        } /* Este lo diseñé para usarlo en Account, pero en 
+        esta vista ya no va, no lo borro porque luego lo necesito*/
+
+        .form__signin,
+        .form__recovery,
+        .box__congratulation {
+          padding: 0;
+        }
+
+        .form__singUplink--text {
+          font-family: var(--colorPrimary);
+          font-weight: 400;
+          font-size: 0.75rem;
+          color: #0089ed;
+        }
+
+        .form__mSingin {
+          font-size: 1.5rem;
+          text-align: center;
+          font-weight: 500;
+          height: 10vh;
+        }
+
+        .form__welcome {
+          display: none;
+        }
+
+        .form__input--label {
+          font-size: 0.75rem;
+        }
+
+        .form__input--field input {
+          font-size: 0.65rem;
+          padding: 0.6rem 0.6rem 0.6rem 0.56rem;
+          height: 95%;
+        }
+
+        .form__link {
+          margin-bottom: 0;
+          height: 9vh;
+        }
+
+        .form__link--text {
+          font-size: 0.75rem;
+        }
+
+        .button {
+          font-size: 0.75rem;
+          padding: 0.6rem 1.12rem;
+          border-radius: 0.28rem;
+          line-height: 1rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <!--Implementacion de toast-->
+      <!-- Start toast error-->
+      <div class="toast toast__error" id="toast__error">
+        <div class="button__toast">
+          <a
+            href="#"
+            class="button__icon button__icon--error"
+            id="close__toast_error"
+          >
+            <iconify-icon icon="ion:close-circle-outline"></iconify-icon>
+          </a>
+        </div>
+        <div class="toast__content">
+          <iconify-icon
+            icon="bi:x-circle-fill"
+            class="toast__icon toast__icon--error"
+          ></iconify-icon>
+          <p class="text text__toast" id="toast__text_error"></p>
+        </div>
+      </div>
+      <!-- End toast error-->
+      <!--Start Toast warning-->
+      <div class="toast toast__warning" id="toast__warning">
+        <div class="button__toast">
+          <a
+            href="#"
+            class="button__icon button__icon--error"
+            id="close__toast_warning"
+          >
+            <iconify-icon icon="ion:close-circle-outline"></iconify-icon>
+          </a>
+        </div>
+        <div class="toast__content">
+          <iconify-icon
+            icon="majesticons:alert-circle"
+            class="toast__icon toast__icon--warning"
+          ></iconify-icon>
+          <p class="text text__toast" id="toast__text_warning"></p>
+        </div>
+      </div>
+      <!-- End toast warning -->
+      <!--Container visible only for screen smaller than 1024px-->
+      <main class="main__message"></main>
+      <!--Container visible only for screens larger than 1024px-->
+      <main class="main">
+        <!-- start container general-->
+        <div class="bands">
+          <div class="bands__container">
+            <div class="band__wider">
+              <div class="band__wider--sesion" id="band__wider_sesion">
+                <h1 class="title">Sing in to</h1>
+                <p class="text__signin">
+                  Lorem ipsum is simply.
+                </p>
+
+                <div class="band__signin--description">
+                  <h1 class="text__signin--description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
+                    optio eum enim fugiat atque, nesciunt libero autem
+                    voluptatum eveniet dolorum.
+                  </h1>
+                </div>
+              </div>
+              <div class="band__wider--recovery" id="band__wider_recovery">
+                <h1 class="title">
+                  Did you forget your password?
+                </h1>
+              </div>
+              <div
+                class="band__wider--congratulation"
+                id="band__wider_congratulation"
+              >
+                <h1 class="title">
+                  Check your email
+                </h1>
+              </div>
+            </div>
+            <div class="band__logo">
+              <img
+                src="/public/img/login/logo.png"
+                class="mainLogo"
+                alt="LearUp logo"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- End container general-->
+        <!-- Start container form-->
+        <div class="forms">
+          <div class="form" id="form">
+            <!-- Start form sign_in -->
+            <form>
+              <div class="form__signin" id="form__signin">
+                <div class="band__logoForm">
+                  <img
+                    src="/public/img/login/logoBlack.png"
+                    class="logoBlack"
+                    alt="LearUp logo"
+                  />
+                </div>
+                <div class="box__title">
+                  <h1 class="form__title">
+                    Welcome to <span class="learUp">LearUp</span>
+                  </h1>
+                  <div class="form__singUp">
+                    <h1 class="form__noAccount">No Account?</h1>
+                    <div class="form__singUplink">
+                      <a href="#" id="goRecovery" class="form__singUplink--text"
+                        >Sing Up</a
+                      >
+                      <!--Cambiar esa referencia por la referencia real-->
+                    </div>
+                  </div>
+                </div>
+                <h1 class="form__welcome">Welcome</h1>
+                <h1 class="form__mSingin">Sing in</h1>
+                <!-- Input form 1-->
+                <div class="form__input">
+                  <label class="form__input--label"
+                    >Enter your email address</label
+                  >
+                  <div class="form__input--field">
+                    <input
+                      type="text"
+                      id="email__signin"
+                      name="email__signin"
+                      placeholder="Email address"
+                      required
+                    />
+                  </div>
+                </div>
+                <!-- Input form 2-->
+                <div class="form__input">
+                  <label class="form__input--label">Enter your password</label>
+                  <div class="form__input--field">
+                    <input
+                      type="password"
+                      id="password__signin"
+                      name="password__signin"
+                      placeholder="Password"
+                      onkeyup="this.setAttribute('value', this.value);"
+                    />
+                    <iconify-icon
+                      icon="ph:eye"
+                      id="show-password"
+                      class="icon__input--field"
+                    ></iconify-icon>
+                    <iconify-icon
+                      icon="ph:eye-slash"
+                      id="hide-password"
+                      class="icon__input--field disable-password-icon"
+                    ></iconify-icon>
+                  </div>
+                </div>
+                <!-- Buttons action-->
+                <!-- Password recovery request link -->
+                <div class="form__link">
+                  <a href="#" id="goRecovery" class="form__link--text"
+                    >Forgot password</a
+                  >
+                </div>
+                <!-- Singn in button -->
+                <div class="form__button">
+                  <button
+                    type="button"
+                    id="btn__signIn"
+                    class="button button__primary--big"
+                  >
+                    Sign in
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <!-- End form sign_in -->
+            <!-- Button go back-->
+            <div>
+              <a href="#" id="goSignin" class="form__icon--recovery">
+                <iconify-icon icon="ic:round-keyboard-arrow-left"></iconify-icon
+              ></a>
+              <a href="#" id="goSignin2" class="box__icon--congratulation">
+                <iconify-icon icon="ic:round-keyboard-arrow-left"></iconify-icon
+              ></a>
+            </div>
+            <!-- End buttton go back-->
+            <!-- Start form recovery -->
+            <div class="form__recovery" id="form__recovery">
+              <form>
+                <h1 class="form__title form__title--recovery">
+                  Introduce tu correo para restablecerla
+                </h1>
+                <!-- Input form 1-->
+                <div class="form__input">
+                  <label class="form__input--label">Email address</label>
+                  <div class="form__input--field">
+                    <input
+                      type="text"
+                      id="email__recovery"
+                      name="email__recovery"
+                      placeholder="Digite su correo electrónico"
+                      required
+                    />
+                  </div>
+                </div>
+                <!-- Buttons action-->
+                <div class="form__button">
+                  <div class="form__button--container">
+                    <a href="" class="button button__secondary">Cancel</a>
+                    <button type="button" id="btn__recovery" class="button">
+                      send
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- End form recovery -->
+            <!-- Start box -->
+            <div class="box__congratulation" id="box__congratulation">
+              <div>
+                <p class="box__text">
+                  We resend a password reset to
+                  <span
+                    id="view_email__recovery"
+                    class="box__text--cursive"
+                  ></span>
+                </p>
+                <p class="box__text">
+                  I did not receive the e-mail,&nbsp;<span
+                    class="box__text--cursive"
+                    >Click to resend</span
+                  >
+                </p>
+              </div>
+              <div class="form__button">
+                <div class="form__button--container">
+                  <a href="#" class="button button__secondary">Go back</a>
+                  <button class="button" id="btn__resendRecovery">
+                    Resend
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="https://cdn.auth0.com/js/auth0/9.16/auth0.min.js"></script>
+    <script src="https://cdn.auth0.com/js/polyfills/1.0/object-assign.min.js"></script>
+    <script>
+      window.addEventListener('load', function() {
+        // Auth configuration !Important
+        var config = JSON.parse(
+          decodeURIComponent(escape(window.atob('@@config@@')))
+        );
+
+        if (config && 'internalOptions' in config) {
+          var leeway = config.internalOptions.leeway;
+          if (leeway) {
+            var convertedLeeway = parseInt(leeway);
+            if (!isNaN(convertedLeeway)) {
+              config.internalOptions.leeway = convertedLeeway;
+            }
+          }
+        }
+        var params = Object.assign(
+          {
+            overrides: {
+              __tenant: config.auth0Tenant,
+              __token_issuer: config.authorizationServer.issuer,
+            },
+            domain: config.auth0Domain,
+            clientID: config.clientID,
+            redirectUri: config.callbackURL,
+            responseType: 'code',
+          },
+          config.internalOptions
+        );
+        var webAuth = new auth0.WebAuth(params);
+        var databaseConnection = 'Username-Password-Authentication';
+
+        // Enable/disable forms
+        const formSignIn = document.getElementById('form__signin');
+        const formRecovery = document.getElementById('form__recovery');
+        // Containers de title
+        const bandWiderSesion = document.getElementById('band__wider_sesion');
+        const bandWiderRecovery = document.getElementById(
+          'band__wider_recovery'
+        );
+        const bandWiderCongratulation = document.getElementById(
+          'band__wider_congratulation'
+        );
+        // Hipervinculos
+        const goRecovery = document.getElementById('goRecovery');
+        const goSignin = document.getElementById('goSignin');
+        const goSignin2 = document.getElementById('goSignin2');
+
+        goRecovery.addEventListener('click', function(e) {
+          e.preventDefault();
+          bandWiderSesion.style.display = 'none';
+          formSignIn.style.display = 'none';
+          bandWiderRecovery.style.display = 'block';
+          goSignin.style.display = 'block';
+          formRecovery.style.display = 'block';
+        });
+
+        goSignin.addEventListener('click', function(e) {
+          e.preventDefault();
+          bandWiderRecovery.style.display = 'none';
+          formRecovery.style.display = 'none';
+          goSignin.style.display = 'none';
+          bandWiderSesion.style.display = 'block';
+          formSignIn.style.display = 'block';
+        });
+
+        goSignin2.addEventListener('click', function(e) {
+          e.preventDefault();
+          bandWiderRecovery.style.display = 'none';
+          formRecovery.style.display = 'none';
+          goSignin2.style.display = 'none';
+          bandWiderCongratulation.style.display = 'none';
+          box__congratulation.style.display = 'none';
+          goSignin.style.display = 'none';
+          bandWiderSesion.style.display = 'block';
+          formSignIn.style.display = 'block';
+        });
+
+        // Hidden|view password inputs
+        const inputFielPassword = document.querySelector('#password__signin');
+        const showPassword = document.querySelector('#show-password');
+        const hidePassword = document.querySelector('#hide-password');
+
+        showPassword.addEventListener('click', function() {
+          inputFielPassword.type = 'text';
+          showPassword.style.display = 'none';
+          hidePassword.style.display = 'block';
+        });
+
+        hidePassword.addEventListener('click', function() {
+          inputFielPassword.type = 'password';
+          showPassword.style.display = 'block';
+          hidePassword.style.display = 'none';
+        });
+
+        // Toast
+        // --- Active toast
+        const toastError = toast__text_error => {
+          toast__error.style.display = 'block';
+          document.getElementById('form').classList.add('animation__error');
+          setTimeout(() => {
+            document
+              .getElementById('form')
+              .classList.remove('animation__error');
+            toast__error.style.display = 'none';
+          }, 3000);
+          document.getElementById(
+            'toast__text_error'
+          ).innerHTML = toast__text_error;
+        };
+
+        const toastWarning = toast__text_warning => {
+          toast__warning.style.display = 'block';
+          document.getElementById('form').classList.add('animation__error');
+          setTimeout(() => {
+            document
+              .getElementById('form')
+              .classList.remove('animation__error');
+            toast__warning.style.display = 'none';
+          }, 3000);
+          document.getElementById(
+            'toast__text_warning'
+          ).innerHTML = toast__text_warning;
+        };
+
+        // --- Close internal toasts
+        document
+          .getElementById('close__toast_error')
+          .addEventListener('click', function(e) {
+            document.getElementById('toast__error').style.display = 'none';
+          });
+        document
+          .getElementById('close__toast_warning')
+          .addEventListener('click', function(e) {
+            document.getElementById('toast__warning').style.display = 'none';
+          });
+
+        // Active check box
+        const activeBoxCongratulation = () => {
+          band__wider_recovery.style.display = 'none';
+          form__recovery.style.display = 'none';
+          goSignin.style.display = 'none';
+          goSignin2.style.display = 'block';
+          band__wider_congratulation.style.display = 'block';
+          box__congratulation.style.display = 'block';
+          let email = document.getElementById('email__recovery').value;
+          document.getElementById('view_email__recovery').innerHTML = email;
+          /*  setTimeout(() => {
+            window.location.href = '';
+                 }, 5000); */
+        };
+
+        // Implementation expressions regular
+        var emailRegex = /^\S+@\S+\.\S+$/i;
+
+        // Configuration de buttons formulation
+        // Star session
+        function signIn(e) {
+          e.preventDefault();
+          var username = document.getElementById('email__signin').value;
+          var password = document.getElementById('password__signin').value;
+
+          // Validación de correo y contraseña vacíos
+          if (
+            username == null ||
+            username.length == 0 ||
+            password == null ||
+            password.length == 0
+          ) {
+            toastError('One or more fields are empty.');
+            return false;
+          }
+
+          // Validación de formato de correo electrónico
+          // Validation de inpus form
+          if (!emailRegex.test(username)) {
+            toastWarning(
+              "Invalid email address! Include an '@' in the address."
+            );
+            return false;
+          }
+
+          // Start session
+          webAuth.login(
+            {
+              realm: databaseConnection,
+              username: username,
+              password: password,
+            },
+            function(err) {
+              if (err) {
+                toastError('Invalid session! Incorrect user or password.');
+                return false;
+              }
+            }
+          );
+        }
+
+        // Recovey password request
+        function recoverypassword(e) {
+          e.preventDefault();
+          var button = this;
+          var email = document.getElementById('email__recovery').value;
+
+          webAuth.changePassword(
+            {
+              connection: databaseConnection,
+              email: email,
+            },
+            function(err) {
+              if (err) {
+                toastError('Invalid application, please try again.');
+              } else {
+                activeBoxCongratulation();
+                button.disabled = true;
+              }
+            }
+          );
+        }
+        function resendRecovery(e) {
+          var email = document.getElementById('email__recovery').value;
+          webAuth.changePassword(
+            {
+              connection: databaseConnection,
+              email: email,
+            },
+            function(err) {
+              if (err) {
+              } else {
+                toastWarning('');
+                button.disabled = true;
+              }
+            }
+          );
+        }
+        // add events buttons
+        document
+          .getElementById('btn__signIn')
+          .addEventListener('click', signIn);
+        document
+          .getElementById('btn__recovery')
+          .addEventListener('click', recoverypassword);
+        document
+          .getElementById('btn__resendRecovery')
+          .addEventListener('click', resendRecovery);
+      });
+    </script>
+  </body>
+</html>

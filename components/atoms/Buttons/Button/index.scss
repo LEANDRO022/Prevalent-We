@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+    /* Clases de colores para el botón */
+.button {
+    @apply bg-cyan-500 border-cyan-500 w-[8rem] rounded-md border py-2 text-center text-base text-white shadow-md;
+}
+
+/* Clases de colores para el botón deshabilitado */
+.button__disabled {
+    @apply bg-gray-300 border-gray-300 cursor-not-allowed;
+}
+
+    .button__secondary {
+        @apply bg-transparent text-colorCyan;
+    }
+
+    .button__container {
+        @apply flex items-center justify-center gap-x-2;
+    }
+
+    .button__project__large {
+        @apply w-[10rem] font-fontPrimaryRegular;
+    }
+}

@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+    .recents_menu {
+        @apply shadow-grey/50 fixed right-0 top-[65px] w-full animate-slide-left space-y-5 rounded-sm bg-white p-4 shadow-md md:right-[120px] md:w-[25rem];
+    }
+
+    .recents_menu__head {
+        @apply sticky top-0 right-0 z-10;
+    }
+
+    .recents_menu__icon,
+    .recents_menu__text {
+        @apply font-fontPrimaryRegular text-xs font-bold text-black;
+    }
+}

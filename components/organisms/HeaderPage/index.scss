@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+    .header_page {
+        @apply grid grid-cols-1 items-center gap-y-2 p-5 lg:grid-cols-2 lg:px-10;
+    }
+
+    .header_page__head {
+        @apply order-2 lg:order-1;
+    }
+
+    .header_page__contain {
+        @apply flex justify-between gap-x-5 order-1 lg:order-2;
+    }
+    .header_page__title {
+        @apply font-fontPrimaryBold text-black text-lg;
+    }
+
+    .header_page__text {
+        @apply text-black font-fontPrimaryRegular text-base;
+    }
+}

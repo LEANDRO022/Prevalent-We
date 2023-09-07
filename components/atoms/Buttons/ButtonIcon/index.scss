@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+    .button_icon__color {
+        @apply bg-colorCyan flex h-11 w-11 items-center justify-center rounded-md;
+    }
+
+    .button_icon__color_search {
+        @apply bg-colorCyan flex h-11 w-11 items-center justify-center rounded-r-md;
+    }
+}

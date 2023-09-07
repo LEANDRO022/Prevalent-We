@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+    .breadcrumbs {
+        @apply flex items-center gap-x-2 h-full px-5;
+    }
+    .breadcrumb__icon_buttton {
+        @apply text-colorCyan w-10 h-10;
+    }
+
+    .breadcrumb__icon {
+        @apply text-colorCyan;
+    }
+
+    .breadcrumb__link,
+    .breadcrumb__divider {
+        @apply text-xs text-grey capitalize;
+    }
+
+    .breadcrumb__link_current {
+        @apply text-colorCyan;
+    }
+
+}

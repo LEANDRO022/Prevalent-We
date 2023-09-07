@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+    // -- Master user
+    .master_user__icon {
+        @apply text-black hover:text-colorCyan hover:-translate-y-1;
+    }
+}

@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .container_main__text_type_c {
+        @apply grid grid-cols-2 justify-between;
+    }
+
+    .card_type_c__subtitle {
+        @apply text-grey/50 uppercase text-right;
+    }
+
+    .container_main__footer_card_type_c {
+        @apply flex gap-x-2 items-center;
+    }
+
+    .container_main__card_type_c__progressbar {
+        @apply flex justify-between gap-y-2;
+    }
+}

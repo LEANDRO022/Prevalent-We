@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+    .input_search__label {
+        @apply ml-1 font-bold text-colorCyan;
+    }
+    .input_search__container {
+        @apply w-full h-11 flex items-center gap-x-2 rounded-l-lg bg-gray-200 p-5;
+    }
+    .input_search {
+    @apply w-full text-black placeholder:text-black relative bg-transparent text-sm focus:outline-none;
+    }
+}

@@ -1,0 +1,4 @@
+{
+  "files": ["./prisma/base.prisma", "./prisma/models/auth.prisma"],
+  "output": "./prisma/schema.prisma"
+}

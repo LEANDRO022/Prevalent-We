@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+    .notification {
+        @apply flex gap-x-2 items-center justify-between h-16; 
+    }
+
+    .notification__content {
+        @apply w-full h-full flex flex-col justify-center items-start;
+    }
+
+    .notification__content_description {
+        @apply grid grid-cols-3 gap-x-1;
+    }
+
+    .notification__text {
+        @apply font-fontPrimaryRegular font-bold text-black text-xs truncate; 
+    }
+
+    .notification__text_thin {
+        @apply font-fontPrimaryLight font-thin;
+    }
+
+    .notification__text_thingrey {
+        @apply text-grey/50;
+    }
+}

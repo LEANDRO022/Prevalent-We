@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .sidebarMobile {
+        @apply bg-grey/50 fixed inset-0 z-20 h-full animate-slide-right shadow backdrop-blur-md;
+    }
+
+    .sidebarMobile__container {
+        @apply py-5 h-full w-[80%] space-y-5 bg-white px-10;
+    }
+
+    .menu {
+        @apply h-full w-[85%] space-y-5;
+    }
+
+    .menu__container_image {
+        @apply relative h-14 w-[10rem];
+    }
+
+    .sidebarMobile__icon,
+    .sidebarMobile__text {
+        @apply text-black;
+    }
+}

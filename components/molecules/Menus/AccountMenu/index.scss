@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+    .account_menu {
+        @apply shadow-grey/50 fixed right-0 top-[65px] w-[18rem] animate-slide-left space-y-5 rounded-sm bg-white p-5 shadow-md;
+    }
+
+    .account_menu__text {
+        @apply font-fontPrimaryBold text-black;
+    }
+
+    .account_menu__text_subtitle {
+        @apply font-fontPrimaryRegular text-grey text-xs uppercase italic;
+    }
+
+    .account_menu__text_link {
+        @apply font-fontPrimaryLight text-black text-sm py-2 hover:text-colorCyan;
+    }
+}

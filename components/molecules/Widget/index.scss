@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .widget {
+    @apply shadow-grey/50 h-full w-full overflow-hidden rounded-2xl shadow-sm;
+  }
+
+  .widget__header {
+    @apply bg-gradient-to-br to-colorCyan via-black from-grey flex h-12 items-center justify-between px-5;
+  }
+
+  .widget__header_container {
+    @apply flex items-center gap-x-4;
+  }
+
+  .widget__title {
+    @apply font-fontSecondary text-sm font-bold lg:text-lg;
+  }
+
+  .widget__button_action {
+    @apply w-5 h-5 text-white;
+  }
+
+  // -- Project details
+  .project_id__details_tab {
+    @apply flex justify-between items-center;
+  }
+
+  .project_id__details__container {
+    @apply mx-auto w-full md:w-11/12 py-10;
+  }
+
+  .project_id__details__container {
+    @apply mx-auto w-full md:w-11/12 py-2;
+  }
+}

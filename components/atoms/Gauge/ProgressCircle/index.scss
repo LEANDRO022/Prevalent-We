@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+    .progress_circle {
+        @apply mx-auto w-4/5 flex flex-col items-center justify-center gap-2;
+    }
+
+    .container__label {
+        @apply flex items-center justify-center gap-3;
+    }
+
+    .progress_circle__icon {
+        @apply text-colorCyan h-3 w-3;
+    }
+
+    .progress_circle__text {
+        @apply text-colorBlue900 text-xs;
+    }
+}

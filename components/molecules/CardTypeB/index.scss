@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+    .card_type_b__icon {
+        @apply text-colorBlue900 h-5 w-5 lg:h-6 lg:w-6;
+    }
+
+    .card_type_b__text {
+        @apply collapse lg:visible;
+    }
+
+    .card_type_b__progressbar {
+        @apply flex gap-x-2 items-center;
+    }
+   
+}

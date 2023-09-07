@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+    .shortcut_mobile_menu {
+        @apply shadow-colorCyan fixed right-5 top-24 animate-slide-left rounded-l-2xl bg-white shadow-md;
+    }
+
+    .shortcut_mobile_menu__container {
+        @apply flex gap-x-3 border-b px-8 py-2;
+    }
+
+    .shortcut_mobile_menu__icon {
+        @apply text-colorCyan;
+    }
+    .shortcut_mobile_menu__text {
+        @apply text-colorBlue900 text-xs focus:text-colorCyan;
+    }
+}

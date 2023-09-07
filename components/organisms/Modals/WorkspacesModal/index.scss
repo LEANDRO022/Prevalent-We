@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+   .workspace_modal {
+      @apply w-full lg:w-[28rem] rounded;
+   }
+
+   .workspace_modal__button_icon {
+      @apply text-black;
+   }
+
+   .workspace_modal__tab_text {
+      @apply text-xs md:text-xs text-center;
+   }
+}

@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .navbar {
+    @apply h-16 border-b-2 bg-white px-5 shadow-lg;
+  }
+
+  .navbar__container {
+    @apply grid h-full grid-cols-1 lg:grid-cols-2;
+  }
+
+  .navbar__column {
+    @apply grid grid-cols-4 gap-x-2;
+  }
+
+  .navbar__column_input {
+    @apply col-span-3 flex items-center gap-x-2;
+  }
+
+  .navbar__column_icon {
+    @apply col-span-1 flex items-center justify-end;
+  }
+
+  .nav__icon_menu {
+    @apply h-8 w-8;
+  }
+
+  .nav__icon {
+    @apply text-black mr-4;
+  }
+}

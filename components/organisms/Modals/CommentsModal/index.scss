@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .wrapper_comments {
+        @apply fixed inset-0 z-50 flex items-end justify-end mx-5;
+    }
+    
+    .modal_comments {
+        @apply bg-white w-[23rem] h-[40rem] overflow-hidden rounded-t-2xl animate-slide-left;
+    }
+
+    .comments_container__head {
+        @apply bg-colorCyan500 h-11 px-5 flex justify-between;
+    }
+
+    .comments__title {
+        @apply font-fontSecondary text-sm font-bold;
+    }
+}

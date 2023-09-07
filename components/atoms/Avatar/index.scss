@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+    .avatar {
+        @apply flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-cover bg-center;
+    }
+
+    .avatar__image {
+        @apply h-full w-full overflow-hidden object-cover rounded-full border border-white shadow;
+    }
+
+    .avatar__text {
+        @apply bg-colorCyan font-fontPrimaryRegular  flex h-full w-full items-center justify-center overflow-hidden rounded-full border border-white object-cover text-base text-white shadow;
+    }
+}

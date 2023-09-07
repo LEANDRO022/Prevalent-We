@@ -1,0 +1,33 @@
+image: node:16
+
+cache:
+  paths:
+    - node_modules/
+
+stages:
+  - lint
+  - build
+  - test
+
+before_script:
+  - yarn install
+
+lint:
+  stage: lint
+  script: yarn lint
+
+build:
+  stage: build
+  script: yarn build
+
+test:
+  stage: test
+  script: yarn test:ci
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - junit.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/cobertura-coverage.xml

@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .shortcut {
+        @apply mx-auto grid w-2/5 grid-cols-4 items-center justify-center;
+    }
+
+    .shortcut__container {
+        @apply flex flex-col items-center justify-center;
+    }
+
+    .shortcut__text {
+        @apply font-fontPrimaryRegular text-black;
+    }
+
+    .shortcut__button_icon {
+        @apply bg-colorCyan mt-5 h-12 w-12 rounded-md p-2 hover:-translate-y-2;
+    }
+}

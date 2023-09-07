@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+   .dropdown {
+    @apply relative h-11 w-full border-2 border-black rounded-lg;
+   }
+
+   .dropdown__container {
+    @apply absolute inset-0 flex items-center pl-4;
+   }
+
+   .dropdown__icon {
+    @apply text-black;
+   }
+}

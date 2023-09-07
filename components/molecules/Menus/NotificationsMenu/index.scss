@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+    .notification_menu {
+        @apply shadow-grey/50 fixed right-0 top-[65px] w-full animate-slide-left space-y-5 rounded-sm bg-white p-4 shadow-md md:right-[85px] md:w-[25rem];
+    }
+
+    .notification_menu__text,
+    .notification_menu__icon {
+        @apply font-fontPrimaryRegular text-xs font-bold text-black;
+    }
+
+    .notification_menu__icon {
+        @apply h-4 w-4;
+    }
+
+    .notification_menu__head {
+        @apply sticky top-0 right-0 z-10 grid grid-cols-2 items-center;
+    }
+
+    .notification_menu__main {
+        @apply h-[20rem] overflow-y-auto pr-2;
+    }
+
+}

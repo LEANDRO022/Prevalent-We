@@ -1,0 +1,192 @@
+/* Importaciones estilos individuales
+ */
+// --Atomo
+@import '@components/atoms/Avatar/index.scss';
+@import '@components/atoms/Card/index.scss';
+@import '@components/atoms/Inputs/InputSearch/index.scss';
+@import '@components/atoms/Inputs/InputText/index.scss';
+@import '@components/atoms/Buttons/Button/index.scss';
+@import '@components/atoms/Buttons/ButtonTab/index.scss';
+@import '@components/atoms/Buttons/ButtonIcon/index.scss';
+@import '@components/atoms/Gauge/ProgressCircle/index.scss';
+
+// --Moleculas
+@import '@components/molecules/CardTypeA/index.scss';
+@import '@components/molecules/CardTypeB/index.scss';
+@import '@components/molecules/CardTypeC/index.scss';
+@import '@components/molecules/Widget/index.scss';
+@import '@components/molecules/Breadcrumb/index.scss';
+@import '@components/molecules/Dropdown/index.scss';
+@import '@components/molecules/Modal/index.scss';
+@import '@components/molecules/Menus/AccountMenu/index.scss';
+@import '@components/molecules/Menus/NotificationsMenu/index.scss';
+@import '@components/molecules/Menus/RecentsMenu/index.scss';
+@import '@components/molecules/Menus/ShortcutMobileMenu/index.scss';
+@import '@components/molecules/Notification/index.scss';
+@import '@components/molecules/Table/index.scss';
+
+// --Organisms
+@import '@components/organisms/Navbar/index.scss';
+@import '@components/organisms/Sidebar/index.scss';
+@import '@components/organisms/SidebarMobile/index.scss';
+@import '@components/organisms/HeaderPage/index.scss';
+@import '@components/organisms/Modals/WorkspacesModal/index.scss';
+@import '@components/organisms/Modals/CommentsModal/index.scss';
+
+// --Pages
+@import '@components/page/dashboard/Recents/index.scss';
+@import '@components/page/dashboard/Shortcuts/index.scss';
+
+// Directivas de talwind
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: 'font-primary-light';
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #999999;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      box-shadow: 0 0 2px 1px #00000033;
+    }
+
+    ::-webkit-scrollbar-thumb:active {
+      background-color: #667080;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #e1e1e1;
+    }
+
+    ::-webkit-scrollbar-track:hover,
+    ::-webkit-scrollbar-track:active {
+      background: #d4d4d4;
+    }
+  }
+
+  @font-face {
+    font-family: 'font-primary-bold';
+    src: url('/fonts/primaryFont/primaryFontBold.otf');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'font-primary-regular';
+    src: url('/fonts/primaryFont/primaryFontRegular.otf');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'font-primary-light';
+    src: url('/fonts/primaryFont/primaryFontLight.otf');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'font-secondary';
+    src: url('/fonts/secondaryFont.ttf');
+    font-display: swap;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: 'font-primary-bold';
+    line-height: 1.22;
+    letter-spacing: 0.2px;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  h4 {
+    font-size: 1.1rem;
+  }
+
+  /*  Paginas */
+  .page {
+    @apply relative mx-auto max-w-[1580px] animate-slide-left;
+  }
+
+  .page__container_mobile {
+    @apply lg:hidden;
+  }
+
+  .container_mobile__header,
+  .page_container__header {
+    @apply sticky top-0 right-0 z-20 bg-white;
+  }
+
+  .page_container__tab {
+    @apply border-t-2 lg:border-t-0 p-5 lg:px-10 space-y-5;
+  }
+
+  .page_container__main {
+    @apply px-5 lg:px-10 py-3;
+  }
+
+  .container_mobile__main {
+    @apply px-5 py-2;
+  }
+
+  .container__mobile_tab {
+    @apply px-5 py-2 border-t-2 flex justify-between items-center;
+  }
+
+  .page__container_desktop {
+    @apply hidden lg:grid grid-cols-4 gap-5 animate-slide-left px-10 py-5;
+  }
+
+  /*  Master data */
+  .page__card_master {
+    @apply grid grid-cols-1 gap-10 lg:grid-cols-3;
+  }
+
+  // Projects
+  .projects {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 animate-slide-bottom;
+  }
+
+  .project_id__button_icon,
+  .container__mobile_button {
+    @apply bg-colorCyan flex h-10 w-10 items-center justify-center rounded-md;
+  }
+
+  .project_id__button {
+    @apply flex gap-x-2 justify-between md:justify-end items-center border-t-2 md:border-t-0 px-5 md:px-10 py-3;
+  }
+
+  .container__project_id {
+    @apply grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-10;
+  }
+
+  .project_id__mini_card {
+    @apply grid grid-cols-2 lg:grid-cols-5 justify-between items-center gap-5;
+  }
+}
